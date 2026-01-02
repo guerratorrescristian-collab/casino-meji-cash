@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Casino Demo",
   description: "Plataforma demo con créditos virtuales",
+  manifest: "/manifest.webmanifest",
+  themeColor: "#7c3aed",
   icons: {
-    icon: "/favicon-32.png",
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
     apple: "/apple-icon.png",
   },
 };
-
-
 
 export default function RootLayout({
   children,
@@ -30,20 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <head>
-        {/* PWA */}
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#7c3aed" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Casino Demo" />
-      </head>
-
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
+
