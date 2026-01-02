@@ -4,12 +4,14 @@ export default function Home() {
   return (
     <div className="space-y-8">
       <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center">
-        <h1 className="text-4xl font-bold text-purple-700">
-          🎰 Casino Demo
-        </h1>
-        <p className="mt-3 text-gray-600">
-          Plataforma demo con créditos virtuales – Web + App (PWA)
-        </p>
+      <h1 className="text-4xl font-bold text-purple-700">
+  💰 Meji Cash
+</h1>
+
+<p className="mt-3 text-gray-600">
+  Plataforma demo con créditos virtuales – Web + App (PWA)
+</p>
+
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
