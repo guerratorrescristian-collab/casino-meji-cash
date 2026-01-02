@@ -1,14 +1,14 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Casino Demo",
-    short_name: "Casino",
+    name: "Meji Cash",
+    short_name: "MejiCash",
     description: "Plataforma demo con créditos virtuales",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#7c3aed",
+    theme_color: "#7a2cff",
     icons: [
       {
         src: "/icon-192.png",
