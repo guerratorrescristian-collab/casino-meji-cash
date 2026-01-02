@@ -12,10 +12,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Casino Demo",
-  description: "Plataforma demo con créditos virtuales – Web + App (PWA)",
+  description: "Plataforma demo con créditos virtuales",
+  manifest: "/manifest.webmanifest",
 };
+
 
 export default function RootLayout({
   children,
