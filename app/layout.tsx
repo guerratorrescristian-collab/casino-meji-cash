@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Casino Demo",
   description: "Plataforma demo con créditos virtuales",
-  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon-32.png",
+    apple: "/apple-icon.png",
+  },
 };
+
 
 
 export default function RootLayout({
