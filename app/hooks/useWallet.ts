@@ -7,22 +7,27 @@ const STORAGE_KEY = "meji-cash-balance";
 export function useWallet() {
   const [balance, setBalance] = useState<number>(0);
 
+  // Cargar saldo al iniciar
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setBalance(Number(saved));
+    if (saved) {
+      setBalance(Number(saved));
+    } else {
+      setBalance(200); // saldo inicial
+    }
   }, []);
 
-  const save = (value: number) => {
-    setBalance(value);
-    localStorage.setItem(STORAGE_KEY, value.toString());
-  };
+  // Guardar saldo cada vez que cambia
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, balance.toString());
+  }, [balance]);
 
   const addCredits = (amount: number) => {
-    save(balance + amount);
+    setBalance((prev) => prev + amount);
   };
 
   const resetCredits = () => {
-    save(0);
+    setBalance(0);
   };
 
   return {
