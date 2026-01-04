@@ -10,25 +10,20 @@ type WalletContextType = {
 
 const WalletContext = createContext<WalletContextType | null>(null);
 
-const STORAGE_KEY = "meji-cash-wallet";
-
 export function WalletProvider({ children }: { children: React.ReactNode }) {
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState<number>(0);
 
-  // Cargar desde localStorage
+  // 🔹 Cargar desde localStorage
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      setBalance(Number(stored));
-    } else {
-      setBalance(200);
-      localStorage.setItem(STORAGE_KEY, "200");
+    const saved = localStorage.getItem("wallet-balance");
+    if (saved !== null) {
+      setBalance(Number(saved));
     }
   }, []);
 
-  // Guardar cada cambio
+  // 🔹 Guardar en localStorage cada cambio
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, balance.toString());
+    localStorage.setItem("wallet-balance", balance.toString());
   }, [balance]);
 
   const addCredits = (amount: number) => {
@@ -36,13 +31,11 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   };
 
   const resetCredits = () => {
-    setBalance(200);
+    setBalance(0);
   };
 
   return (
-    <WalletContext.Provider
-      value={{ balance, addCredits, resetCredits }}
-    >
+    <WalletContext.Provider value={{ balance, addCredits, resetCredits }}>
       {children}
     </WalletContext.Provider>
   );
