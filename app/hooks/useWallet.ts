@@ -2,32 +2,33 @@
 
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "meji-cash-balance";
+const STORAGE_KEY = "meji-cash-wallet";
 
 export function useWallet() {
   const [balance, setBalance] = useState<number>(0);
 
-  // Cargar saldo al iniciar
+  // 🔹 Cargar saldo al iniciar
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      setBalance(Number(saved));
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored !== null) {
+      setBalance(Number(stored));
     } else {
       setBalance(200); // saldo inicial
+      localStorage.setItem(STORAGE_KEY, "200");
     }
   }, []);
 
-  // Guardar saldo cada vez que cambia
+  // 🔹 Guardar saldo cada vez que cambia
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, balance.toString());
   }, [balance]);
 
   const addCredits = (amount: number) => {
-    setBalance((prev) => prev + amount);
+    setBalance((prev) => Math.max(prev + amount, 0));
   };
 
   const resetCredits = () => {
-    setBalance(0);
+    setBalance(200);
   };
 
   return {
@@ -36,3 +37,4 @@ export function useWallet() {
     resetCredits,
   };
 }
+

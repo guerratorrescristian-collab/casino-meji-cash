@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
 
-export const metadata: Metadata = {
-  title: "Meji Cash",
+export const metadata = {
+  title: "Casino Demo",
   description: "Plataforma demo con créditos virtuales",
-  themeColor: "#7c3aed",
-  icons: {
-    icon: [
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-  },
 };
 
 export default function RootLayout({
@@ -20,8 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main className="pt-4">{children}</main>
+      </body>
     </html>
   );
 }
-
